@@ -1,4 +1,4 @@
-import '../utils/imports.dart';
+import '../../utils/imports.dart';
 
 class GeneratedQRCode extends StatelessWidget {
   final String qrData;

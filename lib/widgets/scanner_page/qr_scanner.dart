@@ -1,4 +1,4 @@
-import '../utils/imports.dart';
+import '../../utils/imports.dart';
 
 class QRScannerOverlay extends StatelessWidget {
   const QRScannerOverlay({Key? key, required this.overlayColour})

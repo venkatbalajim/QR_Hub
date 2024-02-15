@@ -37,45 +37,41 @@ import 'validation.dart';
 export 'validation.dart';
 
 // Button Widget
-import '../widgets/button.dart';
-export '../widgets/button.dart';
-
-// Page Title Widget
-import '../widgets/page_title.dart';
-export '../widgets/page_title.dart';
+import '../widgets/common_widgets/button.dart';
+export '../widgets/common_widgets/button.dart';
 
 // QR Code Widget
-import '../widgets/qr_code.dart';
-export '../widgets/qr_code.dart';
+import '../widgets/generator_page/qr_code.dart';
+export '../widgets/generator_page/qr_code.dart';
 
 // QR Scanner Widget
-import '../widgets/qr_scanner.dart';
-export '../widgets/qr_scanner.dart';
+import '../widgets/scanner_page/qr_scanner.dart';
+export '../widgets/scanner_page/qr_scanner.dart';
 
 // Text Field Widget
-import '../widgets/text_field.dart';
-export '../widgets/text_field.dart';
+import '../widgets/generator_page/text_field.dart';
+export '../widgets/generator_page/text_field.dart';
 
 // Custom Icon Buttons Widgets
-import '../widgets/custom_icon_buttons/contact_icon_button.dart';
-import '../widgets/custom_icon_buttons/email_icon_button.dart';
-import '../widgets/custom_icon_buttons/event_icon_button.dart';
-import '../widgets/custom_icon_buttons/geo_icon_button.dart';
-import '../widgets/custom_icon_buttons/phone_icon_button.dart';
-import '../widgets/custom_icon_buttons/sms_icon_button.dart';
-import '../widgets/custom_icon_buttons/text_icon_button.dart';
-import '../widgets/custom_icon_buttons/url_icon_button.dart';
-import '../widgets/custom_icon_buttons/wifi_icon_button.dart';
+import '../widgets/icon_buttons/contact_icon_button.dart';
+import '../widgets/icon_buttons/email_icon_button.dart';
+import '../widgets/icon_buttons/event_icon_button.dart';
+import '../widgets/icon_buttons/geo_icon_button.dart';
+import '../widgets/icon_buttons/phone_icon_button.dart';
+import '../widgets/icon_buttons/sms_icon_button.dart';
+import '../widgets/icon_buttons/text_icon_button.dart';
+import '../widgets/icon_buttons/url_icon_button.dart';
+import '../widgets/icon_buttons/wifi_icon_button.dart';
 
-export '../widgets/custom_icon_buttons/contact_icon_button.dart';
-export '../widgets/custom_icon_buttons/email_icon_button.dart';
-export '../widgets/custom_icon_buttons/event_icon_button.dart';
-export '../widgets/custom_icon_buttons/geo_icon_button.dart';
-export '../widgets/custom_icon_buttons/phone_icon_button.dart';
-export '../widgets/custom_icon_buttons/sms_icon_button.dart';
-export '../widgets/custom_icon_buttons/text_icon_button.dart';
-export '../widgets/custom_icon_buttons/url_icon_button.dart';
-export '../widgets/custom_icon_buttons/wifi_icon_button.dart';
+export '../widgets/icon_buttons/contact_icon_button.dart';
+export '../widgets/icon_buttons/email_icon_button.dart';
+export '../widgets/icon_buttons/event_icon_button.dart';
+export '../widgets/icon_buttons/geo_icon_button.dart';
+export '../widgets/icon_buttons/phone_icon_button.dart';
+export '../widgets/icon_buttons/sms_icon_button.dart';
+export '../widgets/icon_buttons/text_icon_button.dart';
+export '../widgets/icon_buttons/url_icon_button.dart';
+export '../widgets/icon_buttons/wifi_icon_button.dart';
 
 // Result Containers Widgets
 import '../widgets/result_containers/email_container.dart';
