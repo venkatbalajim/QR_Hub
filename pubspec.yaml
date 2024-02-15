@@ -1,0 +1,34 @@
+name: qrcodeapp
+description: "An advanced QR scanner and generator android application."
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: 
+  qr_flutter: 
+  mobile_scanner: 
+  image_picker: 
+  intl: 
+  url_launcher: 
+  app_settings: 
+  permission_handler:
+  share_plus: 
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints:
+  flutter_launcher_icons:
+
+flutter_launcher_icons:
+  android: true
+  image_path: "images/icon.png"
+  adaptive_icon_background: "#ffffff"
+
+flutter:
+  uses-material-design: true
