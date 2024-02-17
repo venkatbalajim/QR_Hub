@@ -2,13 +2,15 @@ import '../../utils/imports.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController textController;
+  final String hintText;
   final Function(String) onDataChanged;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.textController,
     required this.onDataChanged,
-  }) : super(key: key);
+    required this.hintText,
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -39,17 +41,23 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: TextField(
         cursorColor: Colors.blue[900],
         controller: widget.textController,
-        onChanged: (value) {
-          widget.onDataChanged(value);
+        onChanged: (data) {
+          widget.onDataChanged; 
         },
         focusNode: _focusNode,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          hintText: 'Enter the data',
-          hintStyle: TextStyle(
+        decoration: InputDecoration(
+          border: const OutlineInputBorder(),
+          hintText: widget.hintText,
+          hintStyle: const TextStyle(
             fontWeight: FontWeight.w400
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Color.fromRGBO(13, 71, 161, 1),
+              width: 2,
+            ),
+          ),
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               color: Color.fromRGBO(13, 71, 161, 1),
               width: 2,

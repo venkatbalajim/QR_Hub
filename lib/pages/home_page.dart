@@ -23,9 +23,16 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(
+                SizedBox(
                   width: 300,
-                  child: PageTitle(title: "All in One QR Scanner and Generator")
+                  child: Text(
+                    "All in One QR Scanner and Generator",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.blue[900],
+                      fontSize: 25,
+                    ),
+                  )
                 ),
                 const SizedBox(height: 200),
                 CustomButton(
@@ -34,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 20),
                 CustomButton(
-                  onPressed: () => Navigator.pushNamed(context, '/generator'),
+                  onPressed: () => Navigator.pushNamed(context, '/qrcodetype'),
                   buttonName: 'Generate QR Code',
                 ),
               ],

@@ -4,6 +4,10 @@
 import '../pages/home_page.dart';
 export '../pages/home_page.dart';
 
+// Data type Page
+import '../pages/data_type_page.dart';
+export '../pages/data_type_page.dart';
+
 // QR Generator Page
 import '../pages/generator_page.dart';
 export '../pages/generator_page.dart';
@@ -40,6 +44,10 @@ export 'validation.dart';
 import '../widgets/common_widgets/button.dart';
 export '../widgets/common_widgets/button.dart';
 
+// Datatype Card Button Widget
+import '../widgets/data_type_page/data_type_button.dart';
+export '../widgets/data_type_page/data_type_button.dart';
+
 // QR Code Widget
 import '../widgets/generator_page/qr_code.dart';
 export '../widgets/generator_page/qr_code.dart';
@@ -51,6 +59,12 @@ export '../widgets/scanner_page/qr_scanner.dart';
 // Text Field Widget
 import '../widgets/generator_page/text_field.dart';
 export '../widgets/generator_page/text_field.dart';
+
+// Date Picker Widget
+import '../widgets/generator_page/date_picker.dart';
+export '../widgets/generator_page/date_picker.dart';
+import '../widgets/generator_page/time_picker.dart';
+export '../widgets/generator_page/time_picker.dart';
 
 // Custom Icon Buttons Widgets
 import '../widgets/icon_buttons/contact_icon_button.dart';

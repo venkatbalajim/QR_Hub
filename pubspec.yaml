@@ -9,15 +9,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: 
-  qr_flutter: 
-  mobile_scanner: 
-  image_picker: 
-  intl: 
+  cupertino_icons:
+  qr_flutter:
+  mobile_scanner:
+  image_picker:
+  intl:
   url_launcher: 
-  app_settings: 
+  app_settings:
   permission_handler:
-  share_plus: 
+  share_plus:
 
 dev_dependencies:
   flutter_test:

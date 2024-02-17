@@ -44,13 +44,15 @@ class VCardWidget extends StatelessWidget {
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
+              const Text('Title:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
               Text(
-                "Title: $title",
+                title ?? '',
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 8),
+              const Text('Organization:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
               Text(
-                "Organization: $organization",
+                organization ?? '',
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 16),

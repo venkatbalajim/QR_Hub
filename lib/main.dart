@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/generator': (context) => const GeneratorPage(),
         '/scanner': (context) => const ScannerPage(),
+        '/qrcodetype': (context) => const DataTypePage(),
       },
       theme: ThemeData(
         useMaterial3: true,
