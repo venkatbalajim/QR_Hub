@@ -28,6 +28,10 @@ export 'clipboard.dart';
 import 'contact_info.dart';
 export 'contact_info.dart';
 
+// Download Utility
+import 'download.dart';
+export 'download.dart';
+
 // Result Analysis Utility
 import 'result_analysis.dart';
 export 'result_analysis.dart';
@@ -41,12 +45,12 @@ import 'validation.dart';
 export 'validation.dart';
 
 // Button Widget
-import '../widgets/common_widgets/button.dart';
-export '../widgets/common_widgets/button.dart';
+import '../widgets/common_widgets/text_button.dart';
+export '../widgets/common_widgets/text_button.dart';
 
 // Datatype Card Button Widget
-import '../widgets/data_type_page/data_type_button.dart';
-export '../widgets/data_type_page/data_type_button.dart';
+import '../widgets/common_widgets/card_button.dart';
+export '../widgets/common_widgets/card_button.dart';
 
 // QR Code Widget
 import '../widgets/generator_page/qr_code.dart';
@@ -65,6 +69,10 @@ import '../widgets/generator_page/date_picker.dart';
 export '../widgets/generator_page/date_picker.dart';
 import '../widgets/generator_page/time_picker.dart';
 export '../widgets/generator_page/time_picker.dart';
+
+// Download and Share Button Widgets
+import '../widgets/generator_page/download_share_btn.dart';
+export '../widgets/generator_page/download_share_btn.dart';
 
 // Custom Icon Buttons Widgets
 import '../widgets/icon_buttons/contact_icon_button.dart';
@@ -145,3 +153,11 @@ export 'package:permission_handler/permission_handler.dart';
 // Share Plus Package
 import 'package:share_plus/share_plus.dart';
 export 'package:share_plus/share_plus.dart';
+
+// Screenshot Package
+import 'package:screenshot/screenshot.dart';
+export 'package:screenshot/screenshot.dart';
+
+// Image Gallery Saver Package
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+export 'package:image_gallery_saver/image_gallery_saver.dart';

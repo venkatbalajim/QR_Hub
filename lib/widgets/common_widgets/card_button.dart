@@ -1,29 +1,28 @@
 import '../../utils/imports.dart';
 
-class DataTypeButton extends StatefulWidget {
+class CardButton extends StatefulWidget {
   final IconData iconName;
-  final String datatypeName;
+  final String buttonName;
   final VoidCallback onPressed;
-  const DataTypeButton({
+  const CardButton({
     super.key, required this.iconName, 
-    required this.datatypeName, required this.onPressed
+    required this.buttonName, required this.onPressed
   });
 
   @override
-  State<DataTypeButton> createState() => _DataTypeButtonState();
+  State<CardButton> createState() => _CardButtonState();
 }
 
-class _DataTypeButtonState extends State<DataTypeButton> {
+class _CardButtonState extends State<CardButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: widget.onPressed,
       child: Container(
-        padding: const EdgeInsets.only(
-          left: 20
-        ),
-        height: 50,
-        alignment: Alignment.centerLeft,
+        padding: const EdgeInsets.all(10),
+        width: 80,
+        height: 100,
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           border: Border.all(
@@ -31,15 +30,15 @@ class _DataTypeButtonState extends State<DataTypeButton> {
             width: 2,
           )
         ),
-        child: Row(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(widget.iconName, size: 25, color: Colors.blue[900],),
-            const SizedBox(width: 20,),
+            Icon(widget.iconName, size: 35, color: Colors.blue[900],),
             Text(
-              widget.datatypeName, 
+              widget.buttonName, 
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 color: Colors.blue[900]
               ),
             )

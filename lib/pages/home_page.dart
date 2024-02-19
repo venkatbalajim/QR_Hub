@@ -30,20 +30,28 @@ class _HomePageState extends State<HomePage> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.blue[900],
-                      fontSize: 25,
+                      fontSize: 30,
                     ),
                   )
                 ),
                 const SizedBox(height: 200),
-                CustomButton(
-                  onPressed: () => Navigator.pushNamed(context, '/scanner'),
-                  buttonName: 'Scan QR Code',
-                ),
-                const SizedBox(height: 20),
-                CustomButton(
-                  onPressed: () => Navigator.pushNamed(context, '/qrcodetype'),
-                  buttonName: 'Generate QR Code',
-                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CardButton(
+                      onPressed: () => Navigator.pushNamed(context, '/scanner'),
+                      iconName: Icons.qr_code_scanner,
+                      buttonName: 'Scan',
+                    ),
+                    const SizedBox(width: 20),
+                    CardButton(
+                      onPressed: () => Navigator.pushNamed(context, '/qrcodetype'),
+                      iconName: Icons.create,
+                      buttonName: 'Create',
+                    ),
+                  ],
+                )
               ],
             ),
           ),

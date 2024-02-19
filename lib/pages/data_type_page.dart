@@ -24,121 +24,142 @@ class _DataTypePageState extends State<DataTypePage> {
           body: ListView(
             padding: const EdgeInsets.all(30),
             children: [
-              DataTypeButton(
-                datatypeName: 'Text',
-                iconName: Icons.text_fields,
-                onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => const GeneratorPage(qrCodeType: 'Text',),
+              Align(
+                alignment: Alignment.center,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    CardButton(
+                      buttonName: 'Text',
+                      iconName: Icons.text_fields,
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => const GeneratorPage(qrCodeType: 'Text',),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
+                    CardButton(
+                      buttonName: 'URL',
+                      iconName: Icons.link,
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => const GeneratorPage(qrCodeType: 'URL',),
+                          ),
+                        );
+                      },
+                    ),
+                    CardButton(
+                      buttonName: 'Geo',
+                      iconName: Icons.location_on_rounded,
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => const GeneratorPage(qrCodeType: 'Geo',),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 15,),
-              DataTypeButton(
-                datatypeName: 'URL',
-                iconName: Icons.link,
-                onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => const GeneratorPage(qrCodeType: 'URL',),
+              Align(
+                alignment: Alignment.center,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    CardButton(
+                      buttonName: 'Phone',
+                      iconName: Icons.phone,
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => const GeneratorPage(qrCodeType: 'Phone',),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
+                    CardButton(
+                      buttonName: 'Wifi',
+                      iconName: Icons.wifi,
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => const GeneratorPage(qrCodeType: 'Wifi',),
+                          ),
+                        );
+                      },
+                    ),
+                    CardButton(
+                      buttonName: 'Event',
+                      iconName: Icons.calendar_month_outlined,
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => const GeneratorPage(qrCodeType: 'Event',),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 15,),
-              DataTypeButton(
-                datatypeName: 'Geo',
-                iconName: Icons.location_on_rounded,
-                onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => const GeneratorPage(qrCodeType: 'Geo',),
+              Align(
+                alignment: Alignment.center,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    CardButton(
+                      buttonName: 'vCard',
+                      iconName: Icons.person,
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => const GeneratorPage(qrCodeType: 'vCard',),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
-              const SizedBox(height: 15,),
-              DataTypeButton(
-                datatypeName: 'Phone',
-                iconName: Icons.phone,
-                onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => const GeneratorPage(qrCodeType: 'Phone',),
+                    CardButton(
+                      buttonName: 'Email',
+                      iconName: Icons.mail_outline,
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => const GeneratorPage(qrCodeType: 'Email',),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
-              const SizedBox(height: 15,),
-              DataTypeButton(
-                datatypeName: 'Wifi',
-                iconName: Icons.wifi,
-                onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => const GeneratorPage(qrCodeType: 'Wifi',),
+                    CardButton(
+                      buttonName: 'SMS',
+                      iconName: Icons.sms,
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => const GeneratorPage(qrCodeType: 'SMS',),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
-              const SizedBox(height: 15,),
-              DataTypeButton(
-                datatypeName: 'Event',
-                iconName: Icons.calendar_month_outlined,
-                onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => const GeneratorPage(qrCodeType: 'Event',),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 15,),
-              DataTypeButton(
-                datatypeName: 'vCard',
-                iconName: Icons.person,
-                onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => const GeneratorPage(qrCodeType: 'vCard',),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 15,),
-              DataTypeButton(
-                datatypeName: 'Email',
-                iconName: Icons.email_outlined,
-                onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => const GeneratorPage(qrCodeType: 'Email',),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 15,),
-              DataTypeButton(
-                datatypeName: 'SMS',
-                iconName: Icons.sms,
-                onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => const GeneratorPage(qrCodeType: 'SMS',),
-                    ),
-                  );
-                },
+                  ],
+                ),
               ),
             ],
           ),
