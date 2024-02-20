@@ -1,6 +1,21 @@
 // Temporarily not for media and document files. 
 
+// ignore_for_file: non_constant_identifier_names, avoid_print
+
 import '../utils/imports.dart';
+
+Future<dynamic> ShowCapturedWidget(
+  BuildContext context, Uint8List? capturedImage) {
+  return showDialog(
+    useSafeArea: false,
+    context: context,
+    builder: (context) => AlertDialog(
+      backgroundColor: Colors.white,
+      surfaceTintColor: Colors.transparent,
+      content: Image.memory(capturedImage!),
+    ),
+  );
+}
 
 class GeneratorPage extends StatefulWidget {
   final String? qrCodeType;
@@ -18,6 +33,7 @@ class _GeneratorPageState extends State<GeneratorPage> {
   final descriptionController = TextEditingController();
   final addressController = TextEditingController();
   final websiteController = TextEditingController();
+  final screenShotController = ScreenshotController();
   final List<String> wifiEncryptionOptions = ['WPA', 'WEP', 'Open'];
   String selectedEncryption = 'WPA'; 
   DateTime start = DateTime.now();
@@ -31,7 +47,8 @@ class _GeneratorPageState extends State<GeneratorPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          surfaceTintColor: Colors.blue[900],
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.transparent,
           title: const Text('Empty Data'),
           content: const Text('Kindly enter important data to generate QR Code.'),
           actions: [
@@ -81,12 +98,49 @@ class _GeneratorPageState extends State<GeneratorPage> {
                       inputFields(qrCodeName),
                     const SizedBox(height: 20,),
                     if (!isEditMode) 
-                      CustomButton(
+                      CustomTextButton(
                         buttonName: 'Edit the Data', 
                         onPressed: toggleEditMode
                       ),
                     const SizedBox(height: 30,),
-                    if (showQrCode) GeneratedQRCode(qrData: qrData),
+                    if (showQrCode) 
+                      Screenshot(
+                        controller: screenShotController,
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                          ),
+                          width: 250, height: 250,
+                          child: GeneratedQRCode(qrData: qrData),
+                        )
+                      ),
+                    const SizedBox(height: 30,),
+                    if (showQrCode) 
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          DownloadIconButton(onPressed: () async {
+                            screenShotController
+                              .capture(delay: const Duration(milliseconds: 10))
+                              .then((capturedImage) async { 
+                                ShowCapturedWidget(context,capturedImage!);
+                                Future.delayed(const Duration(seconds: 1), () {
+                                  Navigator.of(context).pop();
+                                });
+                              }
+                            ).catchError((onError) {
+                              print(onError);
+                            });
+                            await downloadQRCode(screenShotController, context);
+                          }),
+                          const SizedBox(width: 100,),
+                          ShareIconButton(onPressed: () async {
+                            shareQRImage(screenShotController, context);
+                          },)
+                        ],
+                      )
                   ],
                 ),
               ),
@@ -155,7 +209,7 @@ END:VEVENT
             const SizedBox(height: 20,),
             SizedBox(
               width: 200,
-              child: CustomButton(
+              child: CustomTextButton(
                 buttonName: 'Generate QR Code',
                 onPressed: () {
                   if (qrDataController.text.isEmpty) {
@@ -201,7 +255,7 @@ END:VEVENT
             const SizedBox(height: 20,),
             SizedBox(
               width: 200,
-              child: CustomButton(
+              child: CustomTextButton(
                 buttonName: 'Generate QR Code',
                 onPressed: () {
                   if (qrDataController.text.isEmpty || subjectController.text.isEmpty) {
@@ -238,7 +292,7 @@ END:VEVENT
             const SizedBox(height: 20,),
             SizedBox(
               width: 200,
-              child: CustomButton(
+              child: CustomTextButton(
                 buttonName: 'Generate QR Code',
                 onPressed: () {
                   if (qrDataController.text.isEmpty) {
@@ -322,7 +376,7 @@ END:VEVENT
             const SizedBox(height: 20,),
             SizedBox(
               width: 200,
-              child: CustomButton(
+              child: CustomTextButton(
                 buttonName: 'Generate QR Code',
                 onPressed: () {
                   if (qrDataController.text.isEmpty || subjectController.text.isEmpty) {
@@ -496,7 +550,7 @@ END:VEVENT
             const SizedBox(height: 20,),
             SizedBox(
               width: 200,
-              child: CustomButton(
+              child: CustomTextButton(
                 buttonName: 'Generate QR Code',
                 onPressed: () {
                   if (qrDataController.text.isEmpty || subjectController.text.isEmpty) {
@@ -610,7 +664,7 @@ END:VEVENT
             const SizedBox(height: 20,),
             SizedBox(
               width: 200,
-              child: CustomButton(
+              child: CustomTextButton(
                 buttonName: 'Generate QR Code',
                 onPressed: () {
                   if (
@@ -705,7 +759,7 @@ END:VCARD
             const SizedBox(height: 20,),
             SizedBox(
               width: 200,
-              child: CustomButton(
+              child: CustomTextButton(
                 buttonName: 'Generate QR Code',
                 onPressed: () {
                   if (emailController.text.isEmpty) {
@@ -775,7 +829,7 @@ END:VCARD
             const SizedBox(height: 20,),
             SizedBox(
               width: 200,
-              child: CustomButton(
+              child: CustomTextButton(
                 buttonName: 'Generate QR Code',
                 onPressed: () {
                   if (qrDataController.text.isEmpty) {
@@ -812,7 +866,7 @@ END:VCARD
             const SizedBox(height: 20,),
             SizedBox(
               width: 200,
-              child: CustomButton(
+              child: CustomTextButton(
                 buttonName: 'Generate QR Code',
                 onPressed: () {
                   if (qrDataController.text.isEmpty) {

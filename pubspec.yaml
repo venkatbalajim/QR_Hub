@@ -18,6 +18,9 @@ dependencies:
   app_settings:
   permission_handler:
   share_plus:
+  screenshot:
+  image_gallery_saver:
+  path_provider:
 
 dev_dependencies:
   flutter_test:
