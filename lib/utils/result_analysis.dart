@@ -3,7 +3,7 @@ import 'imports.dart';
 class ResultContainer extends StatelessWidget {
 
   final Barcode data;
-  const ResultContainer({Key? key, required this.data}) : super(key: key);
+  const ResultContainer({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {

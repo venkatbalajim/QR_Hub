@@ -3,8 +3,7 @@ import '../../utils/imports.dart';
 class ContactInfoIconButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const ContactInfoIconButton({Key? key, required this.onPressed})
-      : super(key: key);
+  const ContactInfoIconButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

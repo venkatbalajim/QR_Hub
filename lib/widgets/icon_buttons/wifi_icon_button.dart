@@ -3,7 +3,7 @@ import '../../utils/imports.dart';
 class WifiIconButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const WifiIconButton({Key? key, required this.onPressed}) : super(key: key);
+  const WifiIconButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

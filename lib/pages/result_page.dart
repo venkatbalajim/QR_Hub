@@ -4,8 +4,7 @@ class ResultPage extends StatefulWidget {
   final BarcodeCapture value;
   final Function() screenClose;
 
-  const ResultPage({Key? key, required this.value, required this.screenClose})
-      : super(key: key);
+  const ResultPage({super.key, required this.value, required this.screenClose});
 
   @override
   State<ResultPage> createState() => _ResultPageState();

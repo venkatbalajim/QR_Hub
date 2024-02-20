@@ -3,8 +3,7 @@ import '../../utils/imports.dart';
 class CalendarEventIconButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const CalendarEventIconButton({Key? key, required this.onPressed})
-      : super(key: key);
+  const CalendarEventIconButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

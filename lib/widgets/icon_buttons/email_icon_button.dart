@@ -3,7 +3,7 @@ import '../../utils/imports.dart';
 class EmailIconButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const EmailIconButton({Key? key, required this.onPressed}) : super(key: key);
+  const EmailIconButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

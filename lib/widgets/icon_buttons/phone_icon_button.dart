@@ -3,7 +3,7 @@ import '../../utils/imports.dart';
 class PhoneIconButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const PhoneIconButton({Key? key, required this.onPressed}) : super(key: key);
+  const PhoneIconButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

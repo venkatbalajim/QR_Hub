@@ -3,7 +3,7 @@ import '../../utils/imports.dart';
 class UrlIconButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const UrlIconButton({Key? key, required this.onPressed}) : super(key: key);
+  const UrlIconButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

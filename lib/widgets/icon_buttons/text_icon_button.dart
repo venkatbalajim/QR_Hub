@@ -3,7 +3,7 @@ import '../../utils/imports.dart';
 class TextIconButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const TextIconButton({Key? key, required this.onPressed}) : super(key: key);
+  const TextIconButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

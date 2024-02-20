@@ -3,7 +3,7 @@ import '../../utils/imports.dart';
 class GeoIconButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const GeoIconButton({Key? key, required this.onPressed}) : super(key: key);
+  const GeoIconButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
