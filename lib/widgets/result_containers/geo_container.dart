@@ -32,6 +32,7 @@ class GeoWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20,),
+        if (latitude != null && longitude != null)
         GeoIconButton(
           onPressed: () async {
           final mapUrl = Uri.parse(

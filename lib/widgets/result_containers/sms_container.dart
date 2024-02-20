@@ -35,15 +35,39 @@ class SMSWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20,),
-        SmsIconButton(
-          onPressed: () async {
-            Uri url = Uri.parse('sms:$phoneNumber?body=$message');           
-            if (await canLaunchUrl(url)) {
-              await launchUrl(url);
-            } else {
-              throw 'Could not launch $url';
-            }
-          }
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SmsIconButton(
+              onPressed: () async {
+                Uri url = Uri.parse('sms:$phoneNumber?body=$message');           
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              }
+            ),
+            const SizedBox(width: 30,),
+            if (phoneNumber != null)
+            PhoneIconButton(onPressed: () async {
+              if (phoneNumber != null) {
+                Uri? url = Uri(path: phoneNumber, scheme: 'tel');
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                }
+              }
+            }),
+            const SizedBox(width: 30,),
+            if (phoneNumber != null)
+            ContactInfoIconButton(onPressed: () async {
+              ContactHandler contactHandler = ContactHandler();
+              await contactHandler.openCreateContactMethod(
+                null, null, null, null, null, phoneNumber, null
+              );
+            })
+          ],
         )
       ],
     );

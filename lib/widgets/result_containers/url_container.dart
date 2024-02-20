@@ -4,7 +4,7 @@ import '../../utils/imports.dart';
 class URLWidget extends StatelessWidget {
   final String? link;
   final BarcodeType type;
-  const URLWidget({Key? key, this.link, required this.type}) : super(key: key);
+  const URLWidget({super.key, this.link, required this.type});
   @override
   Widget build(BuildContext context) {
     Uri? url;

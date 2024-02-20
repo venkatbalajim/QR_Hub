@@ -4,7 +4,7 @@ import '../../utils/imports.dart';
 class TextWidget extends StatelessWidget {
   final String? text;
   final BarcodeType type;
-  const TextWidget({Key? key, this.text, required this.type}) : super(key: key);
+  const TextWidget({super.key, this.text, required this.type});
   @override
   Widget build(BuildContext context) {
     Uri? url;

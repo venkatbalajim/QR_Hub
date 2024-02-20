@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import '../../utils/imports.dart';
 
 // Widget to display vCard details 
@@ -12,7 +14,7 @@ class VCardWidget extends StatelessWidget {
   final List<String>? urls;
 
   const VCardWidget({
-    Key? key,
+    super.key,
     this.name,
     this.title,
     this.organization,
@@ -21,10 +23,11 @@ class VCardWidget extends StatelessWidget {
     this.phones,
     this.urls,
     required this.type,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
+    print("$name, $title, $organization, $emails, $addresses, $phones, $urls");
     return Column(
       children: [
         Container(
@@ -136,6 +139,7 @@ class VCardWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            if (phones != null && phones!.isNotEmpty)
             ContactInfoIconButton(
               onPressed: () async {
                 ContactHandler contactHandler = ContactHandler();
@@ -151,6 +155,7 @@ class VCardWidget extends StatelessWidget {
               },
             ),
             const SizedBox(width: 30,),
+            if (phones != null && phones!.isNotEmpty)
             PhoneIconButton(
               onPressed: () async {
                 Uri? url;
@@ -166,6 +171,7 @@ class VCardWidget extends StatelessWidget {
               }
             ),
             const SizedBox(width: 30,),
+            if (addresses != null && addresses!.isNotEmpty)
             GeoIconButton(
               onPressed: () async {
                 final mapUrl = Uri.parse(
@@ -183,6 +189,7 @@ class VCardWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            if (urls != null && urls!.isNotEmpty)
             UrlIconButton(
               onPressed: () async {
                 Uri? url;
@@ -199,6 +206,7 @@ class VCardWidget extends StatelessWidget {
               },
             ),
             const SizedBox(width: 30,),
+            if (emails != null && emails!.isNotEmpty)
             EmailIconButton(
               onPressed: () async {
                 String email = emails!.first.address ?? '';
@@ -213,6 +221,7 @@ class VCardWidget extends StatelessWidget {
               }
             ),
             const SizedBox(width: 30,),
+            if (phones != null && phones!.isNotEmpty)
             SmsIconButton(
               onPressed: () async {
                 String? phone = phones?.first.number;

@@ -4,7 +4,7 @@ import '../../utils/imports.dart';
 class PhoneWidget extends StatelessWidget {
   final String? link;
   final BarcodeType type;
-  const PhoneWidget({Key? key, this.link, required this.type}) : super(key: key);
+  const PhoneWidget({super.key, this.link, required this.type});
   @override
   Widget build(BuildContext context) {
     Uri? url;
@@ -34,6 +34,7 @@ class PhoneWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            if (link != null)
             PhoneIconButton(
               onPressed: () async {
                 if (url != null && await canLaunchUrl(url)) {
@@ -42,6 +43,7 @@ class PhoneWidget extends StatelessWidget {
               }
             ),
             const SizedBox(width: 30,),
+            if (link != null)
             ContactInfoIconButton(onPressed: () async {
               ContactHandler contactHandler = ContactHandler();
               await contactHandler.openCreateContactMethod(

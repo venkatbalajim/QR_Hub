@@ -8,11 +8,11 @@ class EventWidget extends StatelessWidget {
   final String? summary; final BarcodeType type;
 
   const EventWidget({
-    Key? key,
+    super.key,
     this.eventName, this.organizer, this.startDate, this.startTime,
     this.endDate, this.endTime, this.location, this.summary, 
     this.start, this.end, required this.type,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +61,7 @@ class EventWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20,),
+        if (eventName != null)
         CalendarEventIconButton(
           onPressed: () async {
             final calendarEventUrl = generateCalendarEventUrl();

@@ -6,11 +6,10 @@ class WifiWidget extends StatelessWidget {
   final String? password;
   final String? encryption;
   final BarcodeType type;
-  const WifiWidget({Key? key, 
+  const WifiWidget({super.key, 
     required this.name, this.password, 
     this.encryption, required this.type
-  }) 
-  : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return Column(

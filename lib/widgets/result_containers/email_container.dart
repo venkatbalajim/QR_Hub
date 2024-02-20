@@ -42,6 +42,7 @@ class EmailWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20,),
+        if (email != null)
         EmailIconButton(
           onPressed: () async {
             Uri url = Uri.parse(
