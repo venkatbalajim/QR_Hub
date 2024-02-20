@@ -35,21 +35,27 @@ class PhoneWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (link != null)
-            PhoneIconButton(
+            CustomIconButton(
               onPressed: () async {
                 if (url != null && await canLaunchUrl(url)) {
                   await launchUrl(url);
                 } 
-              }
+              }, 
+              buttonName: 'Call',
+              iconName: Icons.phone,
             ),
             const SizedBox(width: 30,),
             if (link != null)
-            ContactInfoIconButton(onPressed: () async {
-              ContactHandler contactHandler = ContactHandler();
-              await contactHandler.openCreateContactMethod(
-                null, null, null, null, null, link, null
-              );
-            })
+            CustomIconButton(
+              onPressed: () async {
+                ContactHandler contactHandler = ContactHandler();
+                await contactHandler.openCreateContactMethod(
+                  null, null, null, null, null, link, null
+                );
+              },
+              buttonName: 'Add Contact',
+              iconName: Icons.person,
+            )
           ],
         ),
       ]

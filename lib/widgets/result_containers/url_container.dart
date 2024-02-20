@@ -30,12 +30,14 @@ class URLWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20,),
-        UrlIconButton(
+        CustomIconButton(
           onPressed: () async {
             if (url != null && await canLaunchUrl(url)) {
               await launchUrl(url);
             }
           },
+          buttonName: 'Open Link',
+          iconName: Icons.open_in_browser,
         )
       ],
     );

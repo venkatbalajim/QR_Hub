@@ -43,7 +43,7 @@ class EmailWidget extends StatelessWidget {
         ),
         const SizedBox(height: 20,),
         if (email != null)
-        EmailIconButton(
+        CustomIconButton(
           onPressed: () async {
             Uri url = Uri.parse(
               'mailto:$email?subject=$subject&body=$body'
@@ -53,7 +53,9 @@ class EmailWidget extends StatelessWidget {
             } else {
               throw 'Could not launch $url';
             }
-          }
+          },
+          buttonName: 'Send Email',
+          iconName: Icons.email_outlined,
         )
       ],
     );

@@ -80,26 +80,9 @@ export '../widgets/generator_page/snack_bar.dart';
 import '../widgets/generator_page/download_share_btn.dart';
 export '../widgets/generator_page/download_share_btn.dart';
 
-// Custom Icon Buttons Widgets
-import '../widgets/icon_buttons/contact_icon_button.dart';
-import '../widgets/icon_buttons/email_icon_button.dart';
-import '../widgets/icon_buttons/event_icon_button.dart';
-import '../widgets/icon_buttons/geo_icon_button.dart';
-import '../widgets/icon_buttons/phone_icon_button.dart';
-import '../widgets/icon_buttons/sms_icon_button.dart';
-import '../widgets/icon_buttons/text_icon_button.dart';
-import '../widgets/icon_buttons/url_icon_button.dart';
-import '../widgets/icon_buttons/wifi_icon_button.dart';
-
-export '../widgets/icon_buttons/contact_icon_button.dart';
-export '../widgets/icon_buttons/email_icon_button.dart';
-export '../widgets/icon_buttons/event_icon_button.dart';
-export '../widgets/icon_buttons/geo_icon_button.dart';
-export '../widgets/icon_buttons/phone_icon_button.dart';
-export '../widgets/icon_buttons/sms_icon_button.dart';
-export '../widgets/icon_buttons/text_icon_button.dart';
-export '../widgets/icon_buttons/url_icon_button.dart';
-export '../widgets/icon_buttons/wifi_icon_button.dart';
+// Custom Icon Button Widget
+import '../widgets/result_page/icon_button.dart';
+export '../widgets/result_page/icon_button.dart';
 
 // Result Containers Widgets
 import '../widgets/result_containers/email_container.dart';

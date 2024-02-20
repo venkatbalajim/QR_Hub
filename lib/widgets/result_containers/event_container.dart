@@ -62,13 +62,15 @@ class EventWidget extends StatelessWidget {
         ),
         const SizedBox(height: 20,),
         if (eventName != null)
-        CalendarEventIconButton(
+        CustomIconButton(
           onPressed: () async {
             final calendarEventUrl = generateCalendarEventUrl();
             if (await canLaunchUrl(calendarEventUrl)) {
               await launchUrl(calendarEventUrl);
             } 
-          }
+          },
+          buttonName: 'Add Event',
+          iconName: Icons.event,
         )
       ],
     );

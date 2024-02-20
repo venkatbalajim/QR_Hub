@@ -38,10 +38,12 @@ class WifiWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20,),
-        WifiIconButton(
+        CustomIconButton(
           onPressed: () async {
             AppSettings.openAppSettings(type: AppSettingsType.wifi);
           },
+          buttonName: 'Connect',
+          iconName: Icons.wifi,
         ),
       ],
     );

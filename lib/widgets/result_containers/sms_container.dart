@@ -39,7 +39,7 @@ class SMSWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SmsIconButton(
+            CustomIconButton(
               onPressed: () async {
                 Uri url = Uri.parse('sms:$phoneNumber?body=$message');           
                 if (await canLaunchUrl(url)) {
@@ -47,26 +47,33 @@ class SMSWidget extends StatelessWidget {
                 } else {
                   throw 'Could not launch $url';
                 }
-              }
+              },
+              buttonName: 'Send SMS',
+              iconName: Icons.sms,
             ),
             const SizedBox(width: 30,),
             if (phoneNumber != null)
-            PhoneIconButton(onPressed: () async {
+            CustomIconButton(onPressed: () async {
               if (phoneNumber != null) {
                 Uri? url = Uri(path: phoneNumber, scheme: 'tel');
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url);
                 }
               }
-            }),
+            }, 
+            buttonName: 'Call',
+            iconName: Icons.phone
+            ),
             const SizedBox(width: 30,),
             if (phoneNumber != null)
-            ContactInfoIconButton(onPressed: () async {
+            CustomIconButton(onPressed: () async {
               ContactHandler contactHandler = ContactHandler();
               await contactHandler.openCreateContactMethod(
                 null, null, null, null, null, phoneNumber, null
               );
-            })
+            },
+            buttonName: 'Add Contact',
+            iconName: Icons.person,)
           ],
         )
       ],

@@ -33,15 +33,17 @@ class GeoWidget extends StatelessWidget {
         ),
         const SizedBox(height: 20,),
         if (latitude != null && longitude != null)
-        GeoIconButton(
+        CustomIconButton(
           onPressed: () async {
-          final mapUrl = Uri.parse(
+            final mapUrl = Uri.parse(
               'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude'
             );
             if (await canLaunchUrl(mapUrl)) {
               await launchUrl(mapUrl);
             } 
-          }
+          },
+          buttonName: 'Show Map',
+          iconName: Icons.location_on_rounded,
         )
       ]
     );

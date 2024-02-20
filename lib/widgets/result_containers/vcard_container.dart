@@ -140,7 +140,7 @@ class VCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (phones != null && phones!.isNotEmpty)
-            ContactInfoIconButton(
+            CustomIconButton(
               onPressed: () async {
                 ContactHandler contactHandler = ContactHandler();
                 await contactHandler.openCreateContactMethod(
@@ -153,10 +153,12 @@ class VCardWidget extends StatelessWidget {
                   urls?.isNotEmpty == true ? urls![0] : null,
                 );
               },
+              buttonName: 'Add Contact',
+              iconName: Icons.person,
             ),
             const SizedBox(width: 30,),
             if (phones != null && phones!.isNotEmpty)
-            PhoneIconButton(
+            CustomIconButton(
               onPressed: () async {
                 Uri? url;
                 if (phones?.first.number != null) {
@@ -168,11 +170,13 @@ class VCardWidget extends StatelessWidget {
                 if (url != null && await canLaunchUrl(url)) {
                   await launchUrl(url);
                 } 
-              }
+              },
+              buttonName: 'Call',
+              iconName: Icons.phone,
             ),
             const SizedBox(width: 30,),
             if (addresses != null && addresses!.isNotEmpty)
-            GeoIconButton(
+            CustomIconButton(
               onPressed: () async {
                 final mapUrl = Uri.parse(
                   'https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent(addresses!.first.addressLines.first)}'
@@ -180,7 +184,9 @@ class VCardWidget extends StatelessWidget {
                 if (await canLaunchUrl(mapUrl)) {
                   await launchUrl(mapUrl);
                 } 
-              }
+              },
+              buttonName: 'Show Map',
+              iconName: Icons.location_on_rounded,
             ),
           ],
         ),
@@ -190,7 +196,7 @@ class VCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (urls != null && urls!.isNotEmpty)
-            UrlIconButton(
+            CustomIconButton(
               onPressed: () async {
                 Uri? url;
                 if (urls?.first != null) {
@@ -204,10 +210,12 @@ class VCardWidget extends StatelessWidget {
                   await launchUrl(url);
                 } 
               },
+              buttonName: 'Open Link',
+              iconName: Icons.open_in_browser,
             ),
             const SizedBox(width: 30,),
             if (emails != null && emails!.isNotEmpty)
-            EmailIconButton(
+            CustomIconButton(
               onPressed: () async {
                 String email = emails!.first.address ?? '';
                 Uri url = Uri.parse(
@@ -218,11 +226,13 @@ class VCardWidget extends StatelessWidget {
                 } else {
                   throw 'Could not launch $url';
                 }
-              }
+              },
+              buttonName: 'Send Email',
+              iconName: Icons.email_outlined,
             ),
             const SizedBox(width: 30,),
             if (phones != null && phones!.isNotEmpty)
-            SmsIconButton(
+            CustomIconButton(
               onPressed: () async {
                 String? phone = phones?.first.number;
                 Uri url = Uri.parse('sms:$phone');           
@@ -231,7 +241,9 @@ class VCardWidget extends StatelessWidget {
                 } else {
                   throw 'Could not launch $url';
                 }
-              }
+              },
+              buttonName: 'Send SMS',
+              iconName: Icons.sms,
             ),
           ],
         ),

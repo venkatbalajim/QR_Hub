@@ -1,9 +1,14 @@
 import '../../utils/imports.dart';
 
-class UrlIconButton extends StatelessWidget {
+class CustomIconButton extends StatelessWidget {
   final VoidCallback onPressed;
+  final String buttonName;
+  final IconData iconName;
 
-  const UrlIconButton({super.key, required this.onPressed});
+  const CustomIconButton({
+    super.key, required this.onPressed, 
+    required this.buttonName, required this.iconName
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +17,13 @@ class UrlIconButton extends StatelessWidget {
         GestureDetector(
           onTap: onPressed,
           child: Icon(
-            Icons.open_in_browser,
+            iconName,
             color: Colors.blue[900],
             size: 40,
           ),
         ),
         Text(
-          'Open Link',
+          buttonName,
           style: TextStyle(
             color: Colors.blue[900],
             fontSize: 15,

@@ -31,12 +31,14 @@ class TextWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20,),
-        TextIconButton(
+        CustomIconButton(
           onPressed: () async {
             if (url != null && await canLaunchUrl(url)) {
               await launchUrl(url);
             }
           },
+          buttonName: 'Web Search',
+          iconName: Icons.search,
         )
       ],
     );
