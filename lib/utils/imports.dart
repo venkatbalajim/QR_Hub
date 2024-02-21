@@ -76,10 +76,6 @@ export '../widgets/generator_page/text_field.dart';
 import '../widgets/generator_page/snack_bar.dart';
 export '../widgets/generator_page/snack_bar.dart';
 
-// Download and Share Button Widgets
-import '../widgets/generator_page/download_share_btn.dart';
-export '../widgets/generator_page/download_share_btn.dart';
-
 // Custom Icon Button Widget
 import '../widgets/result_page/icon_button.dart';
 export '../widgets/result_page/icon_button.dart';

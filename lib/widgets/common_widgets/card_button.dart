@@ -37,9 +37,9 @@ class _CardButtonState extends State<CardButton> {
             Icon(widget.iconName, size: 35, color: Colors.blue[900],),
             Text(
               widget.buttonName, 
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
-                color: Colors.blue[900]
+                fontWeight: FontWeight.w400
               ),
             )
           ],

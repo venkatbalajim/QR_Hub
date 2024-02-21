@@ -23,13 +23,12 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 300,
                   child: Text(
                     "All in One QR Scanner and Generator",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.blue[900],
                       fontSize: 30,
                     ),
                   )

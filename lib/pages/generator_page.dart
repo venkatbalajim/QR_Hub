@@ -121,7 +121,7 @@ class _GeneratorPageState extends State<GeneratorPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          DownloadIconButton(onPressed: () async {
+                          CustomIconButton(onPressed: () async {
                             screenShotController
                               .capture(delay: const Duration(milliseconds: 10))
                               .then((capturedImage) async { 
@@ -134,11 +134,15 @@ class _GeneratorPageState extends State<GeneratorPage> {
                               print(onError);
                             });
                             await downloadQRCode(screenShotController, context);
-                          }),
+                          },
+                          buttonName: 'Download',
+                          iconName: Icons.download),
                           const SizedBox(width: 100,),
-                          ShareIconButton(onPressed: () async {
+                          CustomIconButton(onPressed: () async {
                             shareQRImage(screenShotController, context);
-                          },)
+                          },
+                          buttonName: 'Share',
+                          iconName: Icons.share,)
                         ],
                       )
                   ],
