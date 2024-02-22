@@ -10,7 +10,7 @@ class ContactHandler {
   final String? phone;
   final String? website;
 
-  static const openCreateContact = MethodChannel('com.example.qrcodeapp/openCreateContact');
+  static const openCreateContact = MethodChannel('com.example.qr_hub/openCreateContact');
 
   ContactHandler({
     this.name,  this.title,  

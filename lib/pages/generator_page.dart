@@ -10,8 +10,6 @@ Future<dynamic> ShowCapturedWidget(
     useSafeArea: false,
     context: context,
     builder: (context) => AlertDialog(
-      backgroundColor: Colors.white,
-      surfaceTintColor: Colors.transparent,
       content: Image.memory(capturedImage!),
     ),
   );
@@ -47,8 +45,6 @@ class _GeneratorPageState extends State<GeneratorPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.transparent,
           title: const Text('Empty Data'),
           content: const Text('Kindly enter important data to generate QR Code.'),
           actions: [
@@ -56,7 +52,17 @@ class _GeneratorPageState extends State<GeneratorPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK', style: TextStyle(color: Colors.blue[900]),),
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all(LinearBorder.none),
+                backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                fixedSize: MaterialStateProperty.all(const Size(50, 30)),
+              ),
+              child: Text(
+                'OK', 
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary
+                )
+              ),
             ),
           ],
         );
@@ -344,7 +350,7 @@ END:VEVENT
               padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: const Color.fromRGBO(13, 71, 161, 1),
+                  color: Theme.of(context).colorScheme.primary,
                   width: 2,
                 ),
                 borderRadius: BorderRadius.circular(5)
@@ -441,7 +447,7 @@ END:VEVENT
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(
-                  color: const Color.fromRGBO(13, 71, 161, 1),
+                  color: Theme.of(context).colorScheme.primary,
                   width: 2,
                 ),
               ),
@@ -461,7 +467,7 @@ END:VEVENT
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(
-                  color: const Color.fromRGBO(13, 71, 161, 1),
+                  color: Theme.of(context).colorScheme.primary,
                   width: 2,
                 ),
               ),
@@ -486,7 +492,7 @@ END:VEVENT
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(
-                  color: const Color.fromRGBO(13, 71, 161, 1),
+                  color: Theme.of(context).colorScheme.primary,
                   width: 2,
                 ),
               ),
@@ -506,7 +512,7 @@ END:VEVENT
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(
-                  color: const Color.fromRGBO(13, 71, 161, 1),
+                  color: Theme.of(context).colorScheme.primary,
                   width: 2,
                 ),
               ),
@@ -529,14 +535,14 @@ END:VEVENT
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: const Color.fromRGBO(13, 71, 161, 1),
+                  color: Theme.of(context).colorScheme.primary,
                   width: 2,
                 ),
                 borderRadius: BorderRadius.circular(5)
               ),
               height: 300,
               child: TextField(
-                cursorColor: Colors.blue[900],
+                cursorColor: Theme.of(context).colorScheme.primary,
                 controller: descriptionController,
                 onChanged: (data) {
                   
@@ -643,14 +649,14 @@ END:VEVENT
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: const Color.fromRGBO(13, 71, 161, 1),
+                  color: Theme.of(context).colorScheme.primary,
                   width: 2,
                 ),
                 borderRadius: BorderRadius.circular(5)
               ),
               height: 300,
               child: TextField(
-                cursorColor: Colors.blue[900],
+                cursorColor: Theme.of(context).colorScheme.primary,
                 controller: addressController,
                 onChanged: (data) {
                   addressController.text = data;
@@ -736,14 +742,14 @@ END:VCARD
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: const Color.fromRGBO(13, 71, 161, 1),
+                  color: Theme.of(context).colorScheme.primary,
                   width: 2,
                 ),
                 borderRadius: BorderRadius.circular(5)
               ),
               height: 300,
               child: TextField(
-                cursorColor: Colors.blue[900],
+                cursorColor: Theme.of(context).colorScheme.primary,
                 controller: bodyController,
                 onChanged: (data) {
                   setState(() {
@@ -806,14 +812,14 @@ END:VCARD
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: const Color.fromRGBO(13, 71, 161, 1),
+                  color: Theme.of(context).colorScheme.primary,
                   width: 2,
                 ),
                 borderRadius: BorderRadius.circular(5)
               ),
               height: 300,
               child: TextField(
-                cursorColor: Colors.blue[900],
+                cursorColor: Theme.of(context).colorScheme.primary,
                 controller: bodyController,
                 onChanged: (data) {
                   setState(() {

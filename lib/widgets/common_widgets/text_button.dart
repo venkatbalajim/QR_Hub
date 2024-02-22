@@ -25,7 +25,10 @@ class _CustomTextButtonState extends State<CustomTextButton> {
         ),
         fixedSize: MaterialStateProperty.all(
           const Size.fromWidth(200)
-        )
+        ),
+        side: MaterialStateProperty.all(
+          const BorderSide(color: Colors.transparent)
+        ),
       ),
       child: Text(
         widget.buttonName,

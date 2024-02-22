@@ -19,18 +19,33 @@ class _HomePageState extends State<HomePage> {
       },
       child: SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            surfaceTintColor: Colors.transparent,
+            leading: Builder(
+              builder: (context) {
+                return IconButton(
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  icon: Icon(
+                    Icons.menu, 
+                    color: Theme.of(context).colorScheme.primary,
+                  )
+                );
+              }
+            )
+          ),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(
+                SizedBox(
                   width: 300,
                   child: Text(
                     "All in One QR Scanner and Generator",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
+                    style: Theme.of(context).textTheme.headlineMedium,
                   )
                 ),
                 const SizedBox(height: 200),
@@ -54,6 +69,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          drawer: const AppDrawer(),
         ),
       ),
     );

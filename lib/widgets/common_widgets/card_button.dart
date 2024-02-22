@@ -26,7 +26,7 @@ class _CardButtonState extends State<CardButton> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           border: Border.all(
-            color: Colors.blue[900]!,
+            color: Theme.of(context).colorScheme.primary,
             width: 2,
           )
         ),
@@ -34,7 +34,7 @@ class _CardButtonState extends State<CardButton> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(widget.iconName, size: 35, color: Colors.blue[900],),
+            Icon(widget.iconName, size: 35, color: Theme.of(context).colorScheme.primary,),
             Text(
               widget.buttonName, 
               style: const TextStyle(

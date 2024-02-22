@@ -39,7 +39,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         _focusNode.unfocus();
       },
       child: TextField(
-        cursorColor: Colors.blue[900],
+        cursorColor: Theme.of(context).colorScheme.primary,
         controller: widget.textController,
         onChanged: (data) {
           widget.onDataChanged; 
@@ -51,15 +51,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
           hintStyle: const TextStyle(
             fontWeight: FontWeight.w400
           ),
-          focusedBorder: const OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Color.fromRGBO(13, 71, 161, 1),
+              color: Theme.of(context).colorScheme.primary,
               width: 2,
             ),
           ),
-          enabledBorder: const OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Color.fromRGBO(13, 71, 161, 1),
+              color: Theme.of(context).colorScheme.primary,
               width: 2,
             ),
           ),

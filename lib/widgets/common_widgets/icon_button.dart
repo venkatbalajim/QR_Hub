@@ -18,14 +18,14 @@ class CustomIconButton extends StatelessWidget {
           onTap: onPressed,
           child: Icon(
             iconName,
-            color: Colors.blue[900],
+            color: Theme.of(context).colorScheme.primary,
             size: 40,
           ),
         ),
         Text(
           buttonName,
           style: TextStyle(
-            color: Colors.blue[900],
+            color: Theme.of(context).colorScheme.primary,
             fontSize: 15,
             fontWeight: FontWeight.w500,
           ),

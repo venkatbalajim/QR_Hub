@@ -18,7 +18,7 @@ class WifiWidget extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             border: Border.all(
-              color: const Color.fromRGBO(13, 71, 161, 1),
+              color: Theme.of(context).colorScheme.primary,
               width: 2,
             ),
             borderRadius: BorderRadius.circular(10),

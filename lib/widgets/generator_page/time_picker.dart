@@ -30,11 +30,7 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
       children: [
         Text(
           widget.label,
-          style: const TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 15,
-            color: Color.fromRGBO(13, 71, 161, 1),
-          ),
+          style: Theme.of(context).textTheme.labelSmall,
         ),
         const SizedBox(height: 5),
         Row(
@@ -45,28 +41,19 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
                   context: context,
                   initialTime: selectedTime,
                   builder: (BuildContext context, Widget? child) {
-                    return Theme(
-                      data: ThemeData(
-                        colorScheme: const ColorScheme.light(
-                          primary: Color.fromRGBO(13, 71, 161, 1),
-                          secondary: Color.fromRGBO(13, 71, 161, 1),
-                          onSecondary: Colors.white,
-                        )
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(top: 50.0),
-                            child: SizedBox(
-                              height: 550,
-                              width: 700,
-                              child: child,
-                            ),
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 50.0),
+                          child: SizedBox(
+                            height: 550,
+                            width: 700,
+                            child: child,
                           ),
-                        ],
-                      )
+                        ),
+                      ],
                     );
                   },
                 ).then((value) {
@@ -79,25 +66,7 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
                   }
                 });
               },
-              style: ButtonStyle(
-                side: MaterialStateProperty.all(
-                  const BorderSide(color: Color.fromRGBO(13, 71, 161, 1), width: 2)
-                ),
-                backgroundColor: MaterialStateProperty.all(
-                  Colors.white,
-                ),
-                foregroundColor: MaterialStateProperty.all(
-                  Colors.blue[900]
-                ),
-                fixedSize: MaterialStateProperty.all(
-                  const Size(120,40)
-                ),
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-              ),
+              style: Theme.of(context).textButtonTheme.style,
               child: const Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,

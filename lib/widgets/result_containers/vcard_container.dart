@@ -34,7 +34,7 @@ class VCardWidget extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
             border: Border.all(
-              color: const Color.fromRGBO(13, 71, 161, 1),
+              color: Theme.of(context).colorScheme.primary,
               width: 2,
             ),
             borderRadius: BorderRadius.circular(10),
@@ -154,7 +154,7 @@ class VCardWidget extends StatelessWidget {
                 );
               },
               buttonName: 'Add Contact',
-              iconName: Icons.person,
+              iconName: Icons.person_add_alt_1,
             ),
             const SizedBox(width: 30,),
             if (phones != null && phones!.isNotEmpty)

@@ -21,13 +21,13 @@ class TextWidget extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             border: Border.all(
-              color: const Color.fromRGBO(13, 71, 161, 1),
+              color: Theme.of(context).colorScheme.primary,
               width: 2,
             ),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(text!,
-            style: const TextStyle(fontSize: 18, color: Color.fromRGBO(13, 71, 161, 1)),
+            style: TextStyle(fontSize: 18, color: Theme.of(context).colorScheme.primary),
           ),
         ),
         const SizedBox(height: 20,),

@@ -1,4 +1,4 @@
-name: qrcodeapp
+name: qr_hub
 description: "An advanced QR scanner and generator android application."
 publish_to: 'none' 
 version: 1.0.0+1
@@ -21,6 +21,8 @@ dependencies:
   screenshot:
   image_gallery_saver:
   path_provider:
+  provider:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
