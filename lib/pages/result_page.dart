@@ -1,10 +1,19 @@
 import '../utils/imports.dart';
 
 class ResultPage extends StatefulWidget {
-  final BarcodeCapture value;
-  final Function() screenClose;
+  final Barcode value;
+  final Uint8List? image;
+  final Function()? screenClose;
+  final String? scannedDate;
+  final String? scannedTime;
+  final String? dataType;
 
-  const ResultPage({super.key, required this.value, required this.screenClose});
+  const ResultPage({
+    super.key, 
+    required this.value, this.screenClose, 
+    this.scannedDate, this.scannedTime, 
+    this.dataType, required this.image
+  });
 
   @override
   State<ResultPage> createState() => _ResultPageState();
@@ -13,32 +22,26 @@ class ResultPage extends StatefulWidget {
 class _ResultPageState extends State<ResultPage> {
 
   dynamic result = '';
-  String scannedDate = '';
-  String scannedTime = '';
-  String dataType = '';
+  String displayDate = '';
+  String displayTime = '';
+  String displayDataType = '';
   late Barcode value; 
 
   @override
   void initState() {
     super.initState();
+    value = widget.value;
     parseData();
   }
 
   void parseData() {
-    List<Barcode> fetchData = widget.value.barcodes;
-    if (fetchData.isNotEmpty) {
-      value = fetchData.first;
-      result = value.rawValue;
-      Validation validation = Validation();
-      scannedDate = validation.formatDate(DateTime.now());
-      scannedTime = validation.formatTime(DateTime.now());
-      dataType = validation.getDataType(value.type);
-    } else {
-      result = '';
-      scannedDate = '';
-      scannedTime = '';
-      dataType = '';
-    }
+    Barcode fetchData = widget.value;
+    value = fetchData;
+    result = value.rawValue;
+    Validation validation = Validation();
+    displayDate = widget.scannedDate ?? validation.formatDate(DateTime.now());
+    displayTime = widget.scannedTime ?? validation.formatTime(DateTime.now());
+    displayDataType = validation.getDataType(value.type);
   }
 
   @override
@@ -51,7 +54,7 @@ class _ResultPageState extends State<ResultPage> {
           appBar: AppBar(
             leading: IconButton(
               onPressed: () {
-                widget.screenClose();
+                widget.screenClose!();
                 Navigator.popUntil(context, (route) => route.settings.name == '/scanner');
               }, icon: const Icon(
                 Icons.qr_code_scanner
@@ -104,7 +107,7 @@ class _ResultPageState extends State<ResultPage> {
                       ),
                       width: 300,
                       height: 50,
-                      child: Text('$scannedDate, $scannedTime, $dataType', 
+                      child: Text('$displayDate, $displayTime, $displayDataType', 
                         style: const TextStyle(
                           fontSize: 17,
                         ),
@@ -112,6 +115,12 @@ class _ResultPageState extends State<ResultPage> {
                     ),
                     const SizedBox(height: 20),
                     ResultContainer(data: value),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      width: 250,
+                      height: 250,
+                      child: Image.memory(widget.image!),
+                    )
                   ],
                 ),
               )

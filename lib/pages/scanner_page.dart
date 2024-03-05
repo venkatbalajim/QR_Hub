@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, use_build_context_synchronously
 
 import '../utils/imports.dart';
 
@@ -11,7 +11,7 @@ class ScannerPage extends StatefulWidget {
 
 class _ScannerPageState extends State<ScannerPage> {
 
-  MobileScannerController cameraController = MobileScannerController();
+  MobileScannerController cameraController = MobileScannerController(returnImage: true);
   bool screenOpened = false;
   double zoom = 0.0;
 
@@ -112,16 +112,32 @@ class _ScannerPageState extends State<ScannerPage> {
     );
   }
 
-  void foundBarcode(BarcodeCapture barcode) {
-    print(barcode);
+  void foundBarcode(BarcodeCapture barcode) async {
     if (!screenOpened) {
       final BarcodeCapture code = barcode;
       screenOpened = true;
       ValueNotifier<TorchState> torchStatus = cameraController.torchState;
       if (torchStatus.value == TorchState.on) cameraController.toggleTorch();
+      Uint8List? image = barcode.image;
+      // Validation validation = Validation();
+      // QRCodeData qrCodeData = QRCodeData(
+      //   scannedDate: validation.formatDate(DateTime.now()),
+      //   scannedTime: validation.formatTime(DateTime.now()),
+      //   dataType: validation.getDataType(barcode.barcodes.first.type),
+      //   qrCodeData: code.barcodes.first,
+      // );
+
+      // await QRCodeHistoryManager().addToHistory(qrCodeData);
+
       Navigator.push(context, MaterialPageRoute(
-        builder: (context)=> ResultPage(value: code, screenClose: screenClosed)
-        )).then((value) => print(value));
+        builder: (context) => ResultPage(
+          value: code.barcodes.first, 
+          screenClose: screenClosed,
+          image: image,
+        ),
+      )).then((value) {
+        screenOpened = false;
+      });
     }
   }
 
