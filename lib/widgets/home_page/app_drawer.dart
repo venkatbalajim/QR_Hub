@@ -60,6 +60,7 @@ class _AppDrawerState extends State<AppDrawer> {
             );
           } else if (index == 2) {
             return ListTile(
+              splashColor: Colors.transparent,
               dense: true,
               onTap: () {
                 Navigator.pushNamed(context, '/history');
@@ -73,6 +74,29 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
               title: const Text('History', style: TextStyle(fontSize: 18),),
             );
+          } else if (index == 3) {
+            return ListTile(
+              splashColor: Colors.transparent,
+              dense: true,
+              onTap: () {
+                Share.share(
+                  subject: 'QR Hub App',
+                  'QR Hub - Steps to download:\n\n'
+                  '1. Click the link and go to the releases page of the GitHub repository.\n'
+                  '2. Check out the assets of the latest version of the app.\n'
+                  '3. Click the APK file in the assets and download the app.\n\n'
+                  'Link: https://github.com/venkatbalajim/QR_Hub/releases/latest',
+                );
+              },
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 25,
+              ),
+              titleAlignment: ListTileTitleAlignment.center,
+              leading: const Icon(
+                Icons.share, size: 25,
+              ),
+              title: const Text('Share app', style: TextStyle(fontSize: 18),),
+            );
           } else {
             return ListTile(
               title: Text('Additional Option ${index - 2}'),
@@ -85,7 +109,7 @@ class _AppDrawerState extends State<AppDrawer> {
             color: Colors.transparent,
           );
         },
-        itemCount: 3, // Increment the count when adding new options.
+        itemCount: 4, // Increment the count when adding new options.
       )
     );
   }
