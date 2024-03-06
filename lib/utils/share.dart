@@ -19,3 +19,14 @@ void shareQRImage(ScreenshotController controller,  BuildContext context) async 
     await Share.shareFiles([imagePath.path], text: 'Check this QR Code ...');
   }
 }
+
+void shareApp() {
+  Share.share(
+    subject: 'QR Hub App',
+    'QR Hub - Steps to download:\n\n'
+    '1. Click the link and go to the releases page of the GitHub repository.\n'
+    '2. Check out the assets of the latest version of the app.\n'
+    '3. Click the APK file in the assets and download the app.\n\n'
+    'Link: https://github.com/venkatbalajim/QR_Hub/releases/latest',
+  );
+}

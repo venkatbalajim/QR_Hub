@@ -122,7 +122,11 @@ class _HistoryPageState extends State<HistoryPage> {
               foregroundColor: Colors.white,
               leading: IconButton(
                 onPressed: () {
-                  downloadHistory(context, historyList);
+                  if (historyList.isEmpty) {
+                    SnackBarWidget(context, 'Currently there is no history.');
+                  } else {
+                    downloadHistory(context, historyList);
+                  }
                 }, 
                 icon: const Icon(
                   Icons.download, size: 25,
@@ -135,7 +139,11 @@ class _HistoryPageState extends State<HistoryPage> {
               actions: [
                 IconButton(
                   onPressed: () {
-                    clearHistory();
+                    if (historyList.isEmpty) {
+                      SnackBarWidget(context, 'Currently there is no history.');
+                    } else {
+                      clearHistory();
+                    }
                   }, 
                   icon: const Icon(
                     Icons.delete_forever, size: 25,

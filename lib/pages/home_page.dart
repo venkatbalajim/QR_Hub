@@ -42,10 +42,22 @@ class _HomePageState extends State<HomePage> {
               children: [
                 SizedBox(
                   width: 300,
-                  child: Text(
-                    "All in One QR Scanner and Generator",
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headlineMedium,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "QR Hub",
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        'All in One QR Scanner and Generator',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      )
+                    ],
                   )
                 ),
                 const SizedBox(height: 200),
