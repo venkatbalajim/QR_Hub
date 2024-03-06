@@ -17,10 +17,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'QR Hub',
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
       routes: {
         '/generator':(context) => const GeneratorPage(),
         '/scanner':(context) => const ScannerPage(),
         '/qrcodetype':(context) => const DataTypePage(),
+        '/history': (context) => const HistoryPage(),
       },
       theme: Provider.of<ThemeProvider>(context).isNightModeEnabled
           ? darkTheme

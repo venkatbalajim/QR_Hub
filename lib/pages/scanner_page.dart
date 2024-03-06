@@ -119,15 +119,15 @@ class _ScannerPageState extends State<ScannerPage> {
       ValueNotifier<TorchState> torchStatus = cameraController.torchState;
       if (torchStatus.value == TorchState.on) cameraController.toggleTorch();
       Uint8List? image = barcode.image;
-      // Validation validation = Validation();
-      // QRCodeData qrCodeData = QRCodeData(
-      //   scannedDate: validation.formatDate(DateTime.now()),
-      //   scannedTime: validation.formatTime(DateTime.now()),
-      //   dataType: validation.getDataType(barcode.barcodes.first.type),
-      //   qrCodeData: code.barcodes.first,
-      // );
+      Validation validation = Validation();
+      QRCodeData qrCodeData = QRCodeData(
+        scannedDate: validation.formatDate(DateTime.now()),
+        scannedTime: validation.formatTime(DateTime.now()),
+        dataType: validation.getDataType(barcode.barcodes.first.type),
+        qrCodeData: fetchData(code.barcodes.first),
+      );
 
-      // await QRCodeHistoryManager().addToHistory(qrCodeData);
+      await QRCodeHistoryManager().addToHistory(qrCodeData);
 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) => ResultPage(

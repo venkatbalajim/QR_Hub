@@ -58,6 +58,21 @@ class _AppDrawerState extends State<AppDrawer> {
                 ),
               ),
             );
+          } else if (index == 2) {
+            return ListTile(
+              dense: true,
+              onTap: () {
+                Navigator.pushNamed(context, '/history');
+              },
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 25,
+              ),
+              titleAlignment: ListTileTitleAlignment.center,
+              leading: const Icon(
+                Icons.history, size: 25,
+              ),
+              title: const Text('History', style: TextStyle(fontSize: 18),),
+            );
           } else {
             return ListTile(
               title: Text('Additional Option ${index - 2}'),
@@ -70,7 +85,7 @@ class _AppDrawerState extends State<AppDrawer> {
             color: Colors.transparent,
           );
         },
-        itemCount: 2, // Increment the count when adding new options.
+        itemCount: 3, // Increment the count when adding new options.
       )
     );
   }

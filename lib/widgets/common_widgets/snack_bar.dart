@@ -4,8 +4,8 @@ import '../../utils/imports.dart';
 void SnackBarWidget(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
+      width: 300,
       behavior: SnackBarBehavior.floating,
-      width: 250,
       duration: const Duration(seconds: 2),
       elevation: 10,
       shape: const RoundedRectangleBorder(

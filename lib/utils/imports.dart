@@ -20,6 +20,10 @@ export '../pages/scanner_page.dart';
 import '../pages/result_page.dart';
 export '../pages/result_page.dart';
 
+// History Page
+import '../pages/history_page.dart';
+export '../pages/history_page.dart';
+
 // Clipboard Utility
 import 'clipboard.dart';
 export 'clipboard.dart';
@@ -35,6 +39,10 @@ export 'download.dart';
 // Themes Utility
 import 'themes.dart';
 export 'themes.dart';
+
+// History Utility
+import 'history.dart';
+export 'history.dart';
 
 // Result Analysis Utility
 import 'result_analysis.dart';
@@ -77,8 +85,8 @@ import '../widgets/generator_page/text_field.dart';
 export '../widgets/generator_page/text_field.dart';
 
 // Snack Bar Widget
-import '../widgets/generator_page/snack_bar.dart';
-export '../widgets/generator_page/snack_bar.dart';
+import '../widgets/common_widgets/snack_bar.dart';
+export '../widgets/common_widgets/snack_bar.dart';
 
 // Custom Icon Button Widget
 import '../widgets/common_widgets/icon_button.dart';
@@ -174,3 +182,7 @@ export 'package:provider/provider.dart';
 // Shared Preferences Package
 import 'package:shared_preferences/shared_preferences.dart';
 export 'package:shared_preferences/shared_preferences.dart';
+
+// Lecle Downloads Path Provider Package
+import 'package:lecle_downloads_path_provider/lecle_downloads_path_provider.dart';
+export 'package:lecle_downloads_path_provider/lecle_downloads_path_provider.dart';

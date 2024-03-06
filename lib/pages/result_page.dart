@@ -73,7 +73,7 @@ class _ResultPageState extends State<ResultPage> {
             actions: [
               IconButton(
                 onPressed: () {
-                  copyToClipboard(context, value);
+                  copyToClipboard(context, fetchData(value));
                 }, 
                 icon: const Icon(
                   Icons.copy

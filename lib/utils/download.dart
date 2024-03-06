@@ -11,21 +11,58 @@ Future<void> downloadQRCode(
     Uint8List? image = await screenshotController.capture();
 
     if (image != null) {
-      String dateTime = DateFormat('yyyyMMddTHHmmss').format(DateTime.now());
-      final result = await ImageGallerySaver.saveImage(
-        image, name: 'QR_Code_$dateTime',
-      );
-
-      if (result != null && result['isSuccess']) {
-        SnackBarWidget(context, 'QR Code saved successfully');
-      } else {
-        SnackBarWidget(context, 'Failed to save QR Code image');
+      String downloadDir = (await DownloadsPath.downloadsDirectory())!.path;
+      String appFolderName = "QR Hub";
+      String downloadFolder = "QR Codes";
+      String fileName = DateFormat('yyyyMMddTHHmmss').format(DateTime.now());
+      Directory directory = Directory('$downloadDir/$appFolderName/$downloadFolder');
+      if (!directory.existsSync()) {
+        directory.createSync();
       }
+      String filePath =  "${directory.path}/$fileName.jpg";
+      await File(filePath).writeAsBytes(image)
+        .then((value) => SnackBarWidget(context, 'File downloaded successfully.\nFile directory: Download/QR Hub/QR Codes'));
     } else {
-      SnackBarWidget(context, 'Failed to capture the QR Code');
+      SnackBarWidget(context, 'Sorry, cannot able to fetch QR code image.');
     }
   } catch (e) {
     print(e.toString());
-    SnackBarWidget(context, 'Sorry, something went wrong.');
+    SnackBarWidget(context, 'Sorry, unable to download QR Code.');
+  }
+}
+
+Future<void> downloadHistory(BuildContext context, List<QRCodeData> historyList) async {
+  if (await Permission.storage.isGranted) {
+    String downloadDir = (await DownloadsPath.downloadsDirectory())!.path;
+    print(downloadDir);
+    try {
+      StringBuffer fileContent = StringBuffer();
+      for (var data in historyList) {
+        fileContent.writeln('Date: ${data.scannedDate}');
+        fileContent.writeln('Time: ${data.scannedTime}');
+        fileContent.writeln(data.qrCodeData);
+        fileContent.writeln('\n');
+      }
+      String appFolderName = "QR Hub";
+      Directory directory = Directory('$downloadDir/$appFolderName/History');
+      if (!directory.existsSync()) {
+        directory.createSync();
+      }
+      String fileName = DateFormat('yyyyMMddTHHmmss').format(DateTime.now());
+      String filePath =  "${directory.path}/$fileName.txt";
+      print(filePath);
+      await File(filePath).writeAsString(fileContent.toString())
+        .then((value) => SnackBarWidget(context, 'File downloaded successfully.\nFile directory: Download/QR Hub/History'));
+    } catch (e) {
+      print(e.toString());
+      SnackBarWidget(context, 'Sorry, unable to download history.');
+    }
+  } else if (await Permission.storage.isDenied) {
+    await Permission.storage.request();
+    if (await Permission.storage.isGranted) {
+      SnackBarWidget(context, 'Permission granted. Click the download button again');
+    }
+  } else if (await Permission.storage.isPermanentlyDenied) {
+    SnackBarWidget(context, 'Storage Permission Denied. So, unable to download the history.');
   }
 }

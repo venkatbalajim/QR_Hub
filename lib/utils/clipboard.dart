@@ -18,13 +18,13 @@ String fetchData(Barcode data) {
       String ssid = data.wifi?.ssid ?? '';
       String password = data.wifi?.password ?? '';
       String encryption = data.wifi?.encryptionType.name ?? '';
-      copyText = 'Wi-fi Info:\nSSID: $ssid\nPassword: $password\nEncryption: $encryption';
+      copyText = 'SSID: $ssid\nPassword: $password\nEncryption: $encryption';
       break;
 
     case BarcodeType.geo:
       double latitude = data.geoPoint?.latitude ?? 0.0;
       double longitude = data.geoPoint?.longitude ?? 0.0;
-      copyText = 'Geo Info:\nLatitude: $latitude\nLongitude: $longitude';
+      copyText = 'Latitude: $latitude\nLongitude: $longitude';
       break;
 
     case BarcodeType.phone:
@@ -40,7 +40,7 @@ String fetchData(Barcode data) {
       String endDate = validation.formatDate(data.calendarEvent?.end ?? DateTime.now());
       String endTime = validation.formatTime(data.calendarEvent?.end ?? DateTime.now());
       String notes = data.calendarEvent?.description ?? '';
-      copyText = 'Event Info:\nName: $summary\nLocation: $location\nOrganizer: $organizer\nStart Date: $startDate\nStart Time: $startTime\nEnd Date: $endDate\nEnd Time: $endTime\nDescription: $notes';
+      copyText = 'Name: $summary\nLocation: $location\nOrganizer: $organizer\nStart Date: $startDate\nStart Time: $startTime\nEnd Date: $endDate\nEnd Time: $endTime\nDescription: $notes';
       break;
 
     case BarcodeType.contactInfo:
@@ -51,20 +51,20 @@ String fetchData(Barcode data) {
       List<Email>? emails = data.contactInfo?.emails ?? [];
       List<Address>? addresses = data.contactInfo?.addresses ?? [];
       dynamic websites = data.contactInfo?.urls ?? [];
-      copyText = 'vCard Info:\nName: $name\nTitle: $title\nOrganization: $organization\nPhones: ${phones.map((phone) => phone.number).join(", ")}\nEmails: ${emails.map((email) => email.address).join(", ")}\nAddresses: ${addresses.map((address) => address.addressLines.join(", ")).join(", ")}\nWebsites: ${websites.map((website) => website.toString()).join(",")}';
+      copyText = 'Name: $name\nTitle: $title\nOrganization: $organization\nPhones: ${phones.map((phone) => phone.number).join(", ")}\nEmails: ${emails.map((email) => email.address).join(", ")}\nAddresses: ${addresses.map((address) => address.addressLines.join(", ")).join(", ")}\nWebsites: ${websites.map((website) => website.toString()).join(",")}';
       break;
 
     case BarcodeType.email:
       String email = data.email?.address ?? '';
       String subject = data.email?.subject ?? '';
       String body = data.email?.body ?? '';
-      copyText = 'Email Info:\nEmail: $email\nSubject: $subject\nBody: $body';
+      copyText = 'Email: $email\nSubject: $subject\nBody: $body';
       break;
 
     case BarcodeType.sms:
       String phoneNumber = data.sms?.phoneNumber ?? '';
       String message = data.sms?.message ?? '';
-      copyText = 'SMS Info:\nPhone Number: $phoneNumber\nMessage: $message';
+      copyText = 'Phone Number: $phoneNumber\nMessage: $message';
       break;
 
     default:
@@ -75,8 +75,7 @@ String fetchData(Barcode data) {
 
 }
 
-void copyToClipboard(BuildContext context, Barcode value) {
-  String data = fetchData(value);
+void copyToClipboard(BuildContext context, String data) {
   Clipboard.setData(ClipboardData(text: data));
 
   ScaffoldMessenger.of(context).showSnackBar(
