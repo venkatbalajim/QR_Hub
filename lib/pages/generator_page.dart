@@ -208,6 +208,7 @@ END:VEVENT
         return Column(
           children: [
             CustomTextField(
+              keyboardType: TextInputType.url,
               textController: qrDataController,
               hintText: 'Enter the URL',
               onDataChanged: (data) {
@@ -244,6 +245,7 @@ END:VEVENT
         return Column(
           children: [
             CustomTextField(
+              keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
               textController: qrDataController,
               hintText: 'Enter the latitude',
               onDataChanged: (data) {
@@ -254,6 +256,7 @@ END:VEVENT
             ),
             const SizedBox(height: 15,),
             CustomTextField(
+              keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
               textController: subjectController,
               hintText: 'Enter the longitude',
               onDataChanged: (data) {
@@ -291,6 +294,7 @@ END:VEVENT
         return Column(
           children: [
             CustomTextField(
+              keyboardType: TextInputType.phone,
               textController: qrDataController,
               hintText: 'Enter mobile number',
               onDataChanged: (data) {
@@ -326,6 +330,7 @@ END:VEVENT
         return Column(
           children: [
             CustomTextField(
+              keyboardType: TextInputType.text,
               textController: qrDataController,
               hintText: 'Enter the SSID/Name',
               onDataChanged: (data) {
@@ -336,6 +341,7 @@ END:VEVENT
             ),
             const SizedBox(height: 15,),
             CustomTextField(
+              keyboardType: TextInputType.visiblePassword,
               textController: subjectController,
               hintText: 'Enter the password',
               onDataChanged: (data) {
@@ -412,6 +418,7 @@ END:VEVENT
         return Column(
           children: [
             CustomTextField(
+              keyboardType: TextInputType.text,
               textController: qrDataController,
               hintText: 'Enter the event name',
               onDataChanged: (data) {
@@ -422,6 +429,7 @@ END:VEVENT
             ),
             const SizedBox(height: 15,),
             CustomTextField(
+              keyboardType: TextInputType.text,
               textController: subjectController,
               hintText: 'Enter the location',
               onDataChanged: (data) {
@@ -432,6 +440,7 @@ END:VEVENT
             ),
             const SizedBox(height: 15,),
             CustomTextField(
+              keyboardType: TextInputType.text,
               textController: bodyController,
               hintText: 'Enter the organizer',
               onDataChanged: (data) {
@@ -542,6 +551,7 @@ END:VEVENT
               ),
               height: 300,
               child: TextField(
+                keyboardType: TextInputType.multiline,
                 cursorColor: Theme.of(context).colorScheme.primary,
                 controller: descriptionController,
                 onChanged: (data) {
@@ -584,6 +594,7 @@ END:VEVENT
         return Column(
           children: [
             CustomTextField(
+              keyboardType: TextInputType.name,
               textController: qrDataController,
               onDataChanged: (data) {
                 setState(() {
@@ -594,6 +605,7 @@ END:VEVENT
             ),
             const SizedBox(height: 15,),
             CustomTextField(
+              keyboardType: TextInputType.text,
               textController: subjectController,
               onDataChanged: (data) {
                 setState(() {
@@ -604,6 +616,7 @@ END:VEVENT
             ),
             const SizedBox(height: 15,),
             CustomTextField(
+              keyboardType: TextInputType.text,
               textController: bodyController,
               onDataChanged: (data) {
                 setState(() {
@@ -614,6 +627,7 @@ END:VEVENT
             ),
             const SizedBox(height: 15,),
             CustomTextField(
+              keyboardType: TextInputType.phone,
               textController: descriptionController,
               onDataChanged: (data) {
                 setState(() {
@@ -624,6 +638,7 @@ END:VEVENT
             ),
             const SizedBox(height: 15,),
             CustomTextField(
+              keyboardType: TextInputType.emailAddress,
               textController: emailController,
               onDataChanged: (data) {
                 setState(() {
@@ -634,6 +649,7 @@ END:VEVENT
             ),
             const SizedBox(height: 15,),
             CustomTextField(
+              keyboardType: TextInputType.url,
               textController: websiteController,
               onDataChanged: (data) {
                 setState(() {
@@ -656,6 +672,7 @@ END:VEVENT
               ),
               height: 300,
               child: TextField(
+                keyboardType: TextInputType.streetAddress,
                 cursorColor: Theme.of(context).colorScheme.primary,
                 controller: addressController,
                 onChanged: (data) {
@@ -717,6 +734,7 @@ END:VCARD
         return Column(
           children: [
             CustomTextField(
+              keyboardType: TextInputType.emailAddress,
               textController: emailController,
               onDataChanged: (data) {
                 setState(() {
@@ -727,6 +745,7 @@ END:VCARD
             ),
             const SizedBox(height: 15,),
             CustomTextField(
+              keyboardType: TextInputType.text,
               textController: subjectController,
               onDataChanged: (data) {
                 setState(() {
@@ -749,6 +768,7 @@ END:VCARD
               ),
               height: 300,
               child: TextField(
+                keyboardType: TextInputType.multiline,
                 cursorColor: Theme.of(context).colorScheme.primary,
                 controller: bodyController,
                 onChanged: (data) {
@@ -797,6 +817,7 @@ END:VCARD
         return Column(
           children: [
             CustomTextField(
+              keyboardType: TextInputType.phone,
               textController: qrDataController,
               hintText: 'Enter mobile number',
               onDataChanged: (data) {
@@ -819,6 +840,7 @@ END:VCARD
               ),
               height: 300,
               child: TextField(
+                keyboardType: TextInputType.multiline,
                 cursorColor: Theme.of(context).colorScheme.primary,
                 controller: bodyController,
                 onChanged: (data) {
@@ -865,6 +887,7 @@ END:VCARD
         return Column(
           children: [
             CustomTextField(
+              keyboardType: TextInputType.text,
               textController: qrDataController,
               hintText: 'Enter the text',
               onDataChanged: (data) {
