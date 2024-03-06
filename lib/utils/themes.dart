@@ -66,7 +66,7 @@ ThemeData lightTheme = ThemeData(
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   textTheme: TextTheme(
-    headlineMedium: const TextStyle(fontSize: 40, color: Colors.cyan),
+    headlineMedium: const TextStyle(fontSize: 50, color: Colors.cyan),
     headlineSmall: TextStyle(fontSize: 17, color: Colors.grey[500]),
     labelSmall: TextStyle(
       fontSize: 15, color: Colors.grey[500], fontWeight: FontWeight.w400
