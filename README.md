@@ -1,5 +1,3 @@
-# QR Hub
-
 ![QR Hub](images/Thumbnail.png)
 
 ## Overview
