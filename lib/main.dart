@@ -35,14 +35,12 @@ class MyApp extends StatelessWidget {
   }
 
   Future<void> _requestPermissions() async {
-    Map<Permission, PermissionStatus> statuses = await [
-      Permission.camera,
-      Permission.storage,
-    ].request();
-
-    if (statuses[Permission.camera] != PermissionStatus.granted ||
-        statuses[Permission.storage] != PermissionStatus.granted) {
-      
+    final mobileAndroidInfo = await DeviceInfoPlugin().androidInfo;
+    int? androidVersion = int.tryParse(mobileAndroidInfo.version.release);
+    if (androidVersion != null && androidVersion <= 12) {
+      await [Permission.camera,Permission.storage,].request();
+    } else {
+      await [Permission.camera,Permission.manageExternalStorage,].request();
     }
   }
 }

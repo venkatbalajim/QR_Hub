@@ -188,3 +188,7 @@ export 'package:shared_preferences/shared_preferences.dart';
 // Lecle Downloads Path Provider Package
 import 'package:lecle_downloads_path_provider/lecle_downloads_path_provider.dart';
 export 'package:lecle_downloads_path_provider/lecle_downloads_path_provider.dart';
+
+// Device Info Plus Package 
+import 'package:device_info_plus/device_info_plus.dart';
+export 'package:device_info_plus/device_info_plus.dart';

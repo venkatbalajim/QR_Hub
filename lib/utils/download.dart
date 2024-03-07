@@ -6,12 +6,20 @@ Future<void> downloadQRCode(
   ScreenshotController screenshotController,
   BuildContext context
 ) async {
+
+  final mobileAndroidInfo = await DeviceInfoPlugin().androidInfo;
+  int? androidVersion = int.tryParse(mobileAndroidInfo.version.release);
+  Permission storagePermission = Permission.storage;
+  if (androidVersion != null && androidVersion > 12) {
+    storagePermission = Permission.manageExternalStorage;
+  }
+
   try {
     await Future.delayed(const Duration(seconds: 1));
     Uint8List? image = await screenshotController.capture();
 
     if (image != null) {
-      if (await Permission.storage.isGranted) {
+      if (await storagePermission.isGranted) {
         String downloadDir = (await DownloadsPath.downloadsDirectory())!.path;
         String appFolderName = "QR Hub";
         String downloadFolder = "QR Codes";
@@ -23,12 +31,12 @@ Future<void> downloadQRCode(
         String filePath =  "${directory.path}/$fileName.jpg";
         await File(filePath).writeAsBytes(image)
           .then((value) => SnackBarWidget(context, 'File downloaded successfully.\nFile directory: Download/QR Hub/QR Codes'));
-      } else if (await Permission.storage.isDenied) {
-        await Permission.storage.request();
-        if (await Permission.storage.isGranted) {
+      } else if (await storagePermission.isDenied) {
+        await storagePermission.request();
+        if (await storagePermission.isGranted) {
           SnackBarWidget(context, 'Permission granted. Click the download button again.');
         }
-      } else if (await Permission.storage.isPermanentlyDenied) {
+      } else if (await storagePermission.isPermanentlyDenied) {
         SnackBarWidget(context, 'Storage Permission Denied. So, unable to download the history.');
       }
     } else {
@@ -41,7 +49,15 @@ Future<void> downloadQRCode(
 }
 
 Future<void> downloadHistory(BuildContext context, List<QRCodeData> historyList) async {
-  if (await Permission.storage.isGranted) {
+
+  final mobileAndroidInfo = await DeviceInfoPlugin().androidInfo;
+  int? androidVersion = int.tryParse(mobileAndroidInfo.version.release);
+  Permission storagePermission = Permission.storage;
+  if (androidVersion != null && androidVersion > 12) {
+    storagePermission = Permission.manageExternalStorage;
+  }
+  
+  if (await storagePermission.isGranted) {
     String downloadDir = (await DownloadsPath.downloadsDirectory())!.path;
     print(downloadDir);
     try {
@@ -66,12 +82,12 @@ Future<void> downloadHistory(BuildContext context, List<QRCodeData> historyList)
       print(e.toString());
       SnackBarWidget(context, 'Sorry, unable to download history.');
     }
-  } else if (await Permission.storage.isDenied) {
-    await Permission.storage.request();
-    if (await Permission.storage.isGranted) {
+  } else if (await storagePermission.isDenied) {
+    await storagePermission.request();
+    if (await storagePermission.isGranted) {
       SnackBarWidget(context, 'Permission granted. Click the download button again.');
     }
-  } else if (await Permission.storage.isPermanentlyDenied) {
+  } else if (await storagePermission.isPermanentlyDenied) {
     SnackBarWidget(context, 'Storage Permission Denied. So, unable to download the history.');
   }
 }

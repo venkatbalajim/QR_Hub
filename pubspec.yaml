@@ -24,6 +24,7 @@ dependencies:
   provider: ^6.1.2
   shared_preferences: ^2.2.2
   lecle_downloads_path_provider: ^0.0.2+8
+  device_info_plus: ^9.1.2
 
 dev_dependencies:
   flutter_test:
