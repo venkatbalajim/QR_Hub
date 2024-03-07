@@ -11,17 +11,26 @@ Future<void> downloadQRCode(
     Uint8List? image = await screenshotController.capture();
 
     if (image != null) {
-      String downloadDir = (await DownloadsPath.downloadsDirectory())!.path;
-      String appFolderName = "QR Hub";
-      String downloadFolder = "QR Codes";
-      String fileName = DateFormat('yyyyMMddTHHmmss').format(DateTime.now());
-      Directory directory = Directory('$downloadDir/$appFolderName/$downloadFolder');
-      if (!directory.existsSync()) {
-        directory.createSync();
+      if (await Permission.storage.isGranted) {
+        String downloadDir = (await DownloadsPath.downloadsDirectory())!.path;
+        String appFolderName = "QR Hub";
+        String downloadFolder = "QR Codes";
+        String fileName = DateFormat('yyyyMMddTHHmmss').format(DateTime.now());
+        Directory directory = Directory('$downloadDir/$appFolderName/$downloadFolder');
+        if (!directory.existsSync()) {
+          directory.createSync(recursive: true);
+        }
+        String filePath =  "${directory.path}/$fileName.jpg";
+        await File(filePath).writeAsBytes(image)
+          .then((value) => SnackBarWidget(context, 'File downloaded successfully.\nFile directory: Download/QR Hub/QR Codes'));
+      } else if (await Permission.storage.isDenied) {
+        await Permission.storage.request();
+        if (await Permission.storage.isGranted) {
+          SnackBarWidget(context, 'Permission granted. Click the download button again.');
+        }
+      } else if (await Permission.storage.isPermanentlyDenied) {
+        SnackBarWidget(context, 'Storage Permission Denied. So, unable to download the history.');
       }
-      String filePath =  "${directory.path}/$fileName.jpg";
-      await File(filePath).writeAsBytes(image)
-        .then((value) => SnackBarWidget(context, 'File downloaded successfully.\nFile directory: Download/QR Hub/QR Codes'));
     } else {
       SnackBarWidget(context, 'Sorry, cannot able to fetch QR code image.');
     }
@@ -46,7 +55,7 @@ Future<void> downloadHistory(BuildContext context, List<QRCodeData> historyList)
       String appFolderName = "QR Hub";
       Directory directory = Directory('$downloadDir/$appFolderName/History');
       if (!directory.existsSync()) {
-        directory.createSync();
+        directory.createSync(recursive: true);
       }
       String fileName = DateFormat('yyyyMMddTHHmmss').format(DateTime.now());
       String filePath =  "${directory.path}/$fileName.txt";
@@ -60,7 +69,7 @@ Future<void> downloadHistory(BuildContext context, List<QRCodeData> historyList)
   } else if (await Permission.storage.isDenied) {
     await Permission.storage.request();
     if (await Permission.storage.isGranted) {
-      SnackBarWidget(context, 'Permission granted. Click the download button again');
+      SnackBarWidget(context, 'Permission granted. Click the download button again.');
     }
   } else if (await Permission.storage.isPermanentlyDenied) {
     SnackBarWidget(context, 'Storage Permission Denied. So, unable to download the history.');

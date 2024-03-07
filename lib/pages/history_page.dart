@@ -202,7 +202,7 @@ ${data.qrCodeData}
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text("${data.dataType} QR Code"),
+        title: Text("${data.dataType} QR Code", style: Theme.of(context).textTheme.headlineMedium,),
         content: Text(contentData),
         actions: [
           Row(

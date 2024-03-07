@@ -130,6 +130,8 @@ import 'package:flutter/material.dart';
 export 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 export 'package:flutter/services.dart';
+import 'package:flutter/cupertino.dart';
+export 'package:flutter/cupertino.dart' hide RefreshCallback;
 
 // QR Generator Package
 import 'package:qr_flutter/qr_flutter.dart';

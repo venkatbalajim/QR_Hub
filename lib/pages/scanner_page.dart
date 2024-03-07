@@ -131,6 +131,7 @@ class _ScannerPageState extends State<ScannerPage> {
 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) => ResultPage(
+          controller: cameraController,
           value: code.barcodes.first, 
           screenClose: screenClosed,
           image: image,

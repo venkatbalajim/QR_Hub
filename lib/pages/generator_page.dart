@@ -45,7 +45,7 @@ class _GeneratorPageState extends State<GeneratorPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Empty Data'),
+          title: Text('Empty Data', style: Theme.of(context).textTheme.headlineMedium),
           content: const Text('Kindly enter important data to generate QR Code.'),
           actions: [
             TextButton(
@@ -376,7 +376,9 @@ END:VEVENT
                     value: selectedEncryption,
                     onChanged: (String? newValue) {
                       if (newValue != null) {
-                        selectedEncryption = newValue;
+                        setState(() {
+                          selectedEncryption = newValue;
+                        });
                       }
                     },
                     items: wifiEncryptionOptions.map((String option) {
@@ -395,7 +397,7 @@ END:VEVENT
               child: CustomTextButton(
                 buttonName: 'Generate QR Code',
                 onPressed: () {
-                  if (qrDataController.text.isEmpty || subjectController.text.isEmpty) {
+                  if (qrDataController.text.isEmpty) {
                     showEmptyDataDialog(context); 
                   } else {
                     setState(() {

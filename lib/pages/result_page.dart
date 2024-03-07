@@ -3,6 +3,7 @@ import '../utils/imports.dart';
 class ResultPage extends StatefulWidget {
   final Barcode value;
   final Uint8List? image;
+  final MobileScannerController controller;
   final Function()? screenClose;
   final String? scannedDate;
   final String? scannedTime;
@@ -12,7 +13,8 @@ class ResultPage extends StatefulWidget {
     super.key, 
     required this.value, this.screenClose, 
     this.scannedDate, this.scannedTime, 
-    this.dataType, required this.image
+    this.dataType, this.image, 
+    required this.controller
   });
 
   @override
@@ -35,6 +37,8 @@ class _ResultPageState extends State<ResultPage> {
   }
 
   void parseData() {
+    ValueNotifier<TorchState> torchStatus = widget.controller.torchState;
+    if (torchStatus.value == TorchState.on) widget.controller.toggleTorch();
     Barcode fetchData = widget.value;
     value = fetchData;
     result = value.rawValue;
@@ -116,11 +120,12 @@ class _ResultPageState extends State<ResultPage> {
                     const SizedBox(height: 20),
                     ResultContainer(data: value),
                     const SizedBox(height: 20),
-                    SizedBox(
-                      width: 250,
-                      height: 250,
-                      child: Image.memory(widget.image!),
-                    )
+                    if (widget.image != null)
+                      SizedBox(
+                        width: 250,
+                        height: 250,
+                        child: Image.memory(widget.image!),
+                      )
                   ],
                 ),
               )

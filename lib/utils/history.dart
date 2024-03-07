@@ -4,7 +4,7 @@ class QRCodeData {
   String scannedDate;
   String scannedTime;
   String dataType;
-  String qrCodeData; 
+  String qrCodeData;
 
   QRCodeData({
     required this.scannedDate,
@@ -13,21 +13,21 @@ class QRCodeData {
     required this.qrCodeData,
   });
 
-  Map<String, dynamic> toJson() {
-    return {
-      'scan_date': scannedDate,
-      'scan_time': scannedTime,
-      'qr_code_type': dataType,
-      'qr_code_data': qrCodeData,
-    };
+  List<dynamic> toList() {
+    return [
+      scannedDate,
+      scannedTime,
+      dataType,
+      qrCodeData,
+    ];
   }
 
-  factory QRCodeData.fromJson(Map<String, dynamic> json) {
+  factory QRCodeData.fromList(List<dynamic> list) {
     return QRCodeData(
-      scannedDate: json['scan_date'] ?? '',
-      scannedTime: json['scan_time'] ?? '',
-      dataType: json['qr_code_type'] ?? '',
-      qrCodeData: json['qr_code_data'] ?? '',
+      scannedDate: list[0] ?? '',
+      scannedTime: list[1] ?? '',
+      dataType: list[2] ?? '',
+      qrCodeData: list[3] ?? const Barcode(),
     );
   }
 }
@@ -39,15 +39,10 @@ class QRCodeHistoryManager {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final historyJson = prefs.getString(_key);
     if (historyJson != null) {
-      final List<Map<String, dynamic>> historyList =
-          (json.decode(historyJson) as List).cast<Map<String, dynamic>>();
-      final List<Map<String, dynamic>> castedHistoryList =
-          historyList.map((item) {
-        return item.cast<String, dynamic>();
-      }).toList(growable: false);
-
-      return castedHistoryList
-          .map((item) => QRCodeData.fromJson(item))
+      final List<List<dynamic>> historyList =
+          (json.decode(historyJson) as List).cast<List<dynamic>>();
+      return historyList
+          .map((item) => QRCodeData.fromList(item))
           .toList(growable: true);
     }
     return [];
@@ -57,15 +52,13 @@ class QRCodeHistoryManager {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final history = await getHistory();
     history.add(data);
-    final historyJson =
-        json.encode(history.map((item) => item.toJson()).toList());
+    final historyJson = json.encode(history.map((item) => item.toList()).toList());
     prefs.setString(_key, historyJson);
   }
 
   Future<void> saveHistory(List<QRCodeData> history) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final historyJson =
-        json.encode(history.map((item) => item.toJson()).toList());
+    final historyJson = json.encode(history.map((item) => item.toList()).toList());
     prefs.setString(_key, historyJson);
   }
 }

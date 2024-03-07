@@ -6,7 +6,8 @@ ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
   textTheme: TextTheme(
-    headlineMedium: TextStyle(fontSize: 50, color: Colors.blue[900]),
+    headlineLarge: TextStyle(fontSize: 50, color: Colors.blue[900]),
+    headlineMedium: const TextStyle(fontSize: 25, color: Colors.black),
     headlineSmall: TextStyle(fontSize: 17, color: Colors.grey[600]),
     labelSmall: TextStyle(
       fontSize: 15, color: Colors.blue[900], fontWeight: FontWeight.w400
@@ -47,6 +48,7 @@ ThemeData lightTheme = ThemeData(
       fixedSize: MaterialStateProperty.all(const Size(40, 25)),
       backgroundColor: MaterialStateProperty.all(Colors.transparent),
     ),
+    headerHeadlineStyle: const TextStyle(fontSize: 35)
   ),
   timePickerTheme: TimePickerThemeData(
     cancelButtonStyle: ButtonStyle(
@@ -66,7 +68,8 @@ ThemeData lightTheme = ThemeData(
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   textTheme: TextTheme(
-    headlineMedium: const TextStyle(fontSize: 50, color: Colors.cyan),
+    headlineLarge: const TextStyle(fontSize: 50, color: Colors.cyan),
+    headlineMedium: const TextStyle(fontSize: 25, color: Colors.white),
     headlineSmall: TextStyle(fontSize: 17, color: Colors.grey[500]),
     labelSmall: TextStyle(
       fontSize: 15, color: Colors.grey[500], fontWeight: FontWeight.w400
@@ -108,7 +111,8 @@ ThemeData darkTheme = ThemeData(
       shape: MaterialStateProperty.all(LinearBorder.none),
       fixedSize: MaterialStateProperty.all(const Size(40, 25)),
       backgroundColor: MaterialStateProperty.all(Colors.transparent),
-    )
+    ),
+    headerHeadlineStyle: const TextStyle(fontSize: 35)
   ),
   timePickerTheme: TimePickerThemeData(
     backgroundColor: Colors.grey[900],

@@ -41,6 +41,30 @@ class _CustomTextFieldState extends State<CustomTextField> {
         _focusNode.unfocus();
       },
       child: TextField(
+        contextMenuBuilder: (context, editableTextState) {
+          return AdaptiveTextSelectionToolbar(
+            anchors: editableTextState.contextMenuAnchors,
+            children: editableTextState.contextMenuButtonItems
+                .map((ContextMenuButtonItem buttonItem) {
+              return CupertinoButton(
+                minSize: 50,
+                borderRadius: const BorderRadius.all(Radius.circular(0)),
+                color: Colors.grey[800],
+                onPressed: buttonItem.onPressed,
+                padding: const EdgeInsets.all(10.0),
+                pressedOpacity: 0.7,
+                child: SizedBox(
+                  width: 80,
+                  child: Text(
+                    CupertinoTextSelectionToolbarButton.getButtonLabel(context, buttonItem),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+              );
+            }).toList(),
+          );
+        },
         cursorColor: Theme.of(context).colorScheme.primary,
         controller: widget.textController,
         onChanged: (data) {
